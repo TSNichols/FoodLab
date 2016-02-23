@@ -36,6 +36,7 @@
     //Ingredients Screen
     <string name="ingredient_name_txt">Name:</string>
     <string name="unit_size_txt">Unit Size:</string>
+    <string-array name="ingredient_name_array"></string-array>
     <string-array name="unit_size_array">
         <item>cup</item>
         <item>lb.</item>
@@ -45,6 +46,17 @@
         <item>tsp</item>
         <item>single</item>
     </string-array>
+    <string name="new_ingredient">New Ingredient</string>
+    <string name="new_unit_size">Add Size</string>
+
+    //Add Ingredients Fragment
+    <string name="enter_new_ingredient">Enter Ingredient Name</string>
+    <string name="select_unit_size">Select Unit Size:</string>
+    <string name="add_ingred_btn">Add Ingredient</string>
+    <string name="add_ingred_cancel">Cancel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

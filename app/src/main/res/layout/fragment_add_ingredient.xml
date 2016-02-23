@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="300dp"
+    tools:context="tsnichols.foodlab.AddIngredient"
+    android:elevation="10dp"
+    android:layout_gravity="center">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edittxt_add_ingredient_name"
+        android:layout_gravity="center_horizontal|top"
+        android:hint="@string/enter_new_ingredient"
+        android:layout_marginTop="20dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spin_unit_size"
+        android:entries="@array/unit_size_array"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_ingred_btn"
+        android:id="@+id/button"
+        android:layout_gravity="end|bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_ingred_cancel"
+        android:id="@+id/button2"
+        android:layout_gravity="start|bottom" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/select_unit_size"
+        android:id="@+id/textView"
+        android:layout_marginTop="110dp" />
+</FrameLayout>

@@ -30,7 +30,8 @@
         android:layout_toRightOf="@+id/txt_name"
         android:layout_toEndOf="@+id/txt_name"
         android:layout_marginLeft="47dp"
-        android:layout_marginStart="47dp" />
+        android:layout_marginStart="47dp"
+        android:entries="@array/ingredient_name_array" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,5 +52,26 @@
         android:layout_alignLeft="@+id/spin_ingredient_name"
         android:layout_alignStart="@+id/spin_ingredient_name"
         android:entries="@array/unit_size_array" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_unit_size"
+        android:id="@+id/btn_new_size"
+        android:layout_below="@+id/spin_unit_size"
+        android:layout_alignLeft="@+id/txt_unit_size"
+        android:layout_alignStart="@+id/txt_unit_size"
+        android:layout_marginTop="93dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_ingredient"
+        android:id="@+id/btn_new_ingredient"
+        android:layout_alignTop="@+id/btn_new_size"
+        android:layout_toRightOf="@+id/btn_new_size"
+        android:layout_toEndOf="@+id/btn_new_size"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
 
 </RelativeLayout>
