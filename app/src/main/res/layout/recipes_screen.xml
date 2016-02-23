@@ -23,9 +23,7 @@
         android:id="@+id/txt_add"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="41dp"
-        android:layout_marginEnd="41dp" />
+        android:layout_alignParentEnd="true" />
 
     <ExpandableListView
         android:layout_width="150dp"
@@ -81,8 +79,8 @@
         android:layout_below="@+id/checkBox_breakfast"
         android:layout_alignLeft="@+id/txt_ingredients"
         android:layout_alignStart="@+id/txt_ingredients"
-        android:layout_alignEnd="@+id/txt_add"
-        android:layout_alignRight="@+id/txt_add" />
+        android:layout_toLeftOf="@+id/txt_add"
+        android:layout_toStartOf="@+id/txt_add" />
 
     <TextView
         android:layout_width="wrap_content"

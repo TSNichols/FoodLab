@@ -20,7 +20,8 @@
         android:layout_marginLeft="80dp"
         android:layout_marginStart="80dp"
         android:clickable="false"
-        android:contentDescription="calender_btn" />
+        android:contentDescription="calender_btn"
+        android:onClick="goto_calender"/>
 
     <ImageButton
         android:layout_width="50dp"
@@ -31,7 +32,8 @@
         android:layout_alignTop="@+id/calender_btn"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:contentDescription="recipes_btn" />
+        android:contentDescription="recipes_btn"
+        android:onClick="goto_recipes"/>
 
     <ImageButton
         android:layout_width="50dp"

@@ -10,4 +10,12 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
     }
+
+    public void goto_calender(){
+
+        setContentView(R.layout.calender_screen);
+
+
+    }
+
 }
