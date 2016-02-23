@@ -49,6 +49,13 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
 
+        btn_ingredients.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Ingredients_Screen.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

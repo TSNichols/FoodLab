@@ -25,10 +25,10 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <ExpandableListView
+    <Spinner
         android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:id="@+id/expandableListView"
+        android:layout_height="50dp"
+        android:id="@+id/spin_recipes_title"
         android:layout_alignTop="@+id/txt_title"
         android:layout_centerHorizontal="true" />
 
@@ -38,7 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/ingredients_txt"
         android:id="@+id/txt_ingredients"
-        android:layout_below="@+id/expandableListView"
+        android:layout_below="@+id/spin_recipes_title"
         android:layout_alignLeft="@+id/txt_title"
         android:layout_alignStart="@+id/txt_title"
         android:layout_marginTop="35dp" />

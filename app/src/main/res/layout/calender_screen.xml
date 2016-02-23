@@ -60,44 +60,47 @@
         android:layout_alignLeft="@+id/txt_lunch"
         android:layout_alignStart="@+id/txt_lunch" />
 
-    <ExpandableListView
-        android:layout_width="100dp"
+    <Spinner
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:id="@+id/expListView_week"
+        android:id="@+id/spin_week"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/txt_week"
         android:layout_alignParentTop="false"
         android:layout_alignParentBottom="false"
         android:layout_alignParentRight="false"
-        android:layout_alignWithParentIfMissing="false" />
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentEnd="false" />
 
-    <ExpandableListView
-        android:layout_width="100dp"
+    <Spinner
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:id="@+id/expListView_day"
+        android:id="@+id/spin_day"
         android:layout_alignTop="@+id/txt_day"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:entries="@array/day_array" />
 
-    <ExpandableListView
-        android:layout_width="100dp"
+    <Spinner
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:id="@+id/expListView_breakfast"
+        android:id="@+id/spin_breakfast"
         android:layout_alignTop="@+id/txt_breakfast"
         android:layout_centerHorizontal="true" />
 
-    <ExpandableListView
-        android:layout_width="100dp"
+    <Spinner
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:id="@+id/expListView_lunch"
+        android:id="@+id/spin_lunch"
         android:layout_alignTop="@+id/txt_lunch"
-        android:layout_alignLeft="@+id/expListView_breakfast"
-        android:layout_alignStart="@+id/expListView_breakfast" />
+        android:layout_centerHorizontal="true" />
 
-    <ExpandableListView
-        android:layout_width="100dp"
+    <Spinner
+        android:layout_width="125dp"
         android:layout_height="50dp"
-        android:id="@+id/expListView_dinner"
+        android:id="@+id/spin_dinner"
         android:layout_alignTop="@+id/txt_dinner"
         android:layout_centerHorizontal="true" />
+
+
 
 </RelativeLayout>

@@ -1,15 +1,30 @@
 <resources>
+    //Global
     <string name="app_name">Food Lab</string>
+
+    //Home Screen
     <string name="calender_btn">Calender</string>
     <string name="recipes_btn">Recipes</string>
     <string name="groceries_btn">Groceries</string>
     <string name="ingredients_btn">Ingredients</string>
+
+    //Calender Screen
     <string name="week_txt">Week:</string>
     <string name="day_txt">Day:</string>
+    <string-array name="day_array">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
     <string name="breakfast_txt">Breakfast:</string>
     <string name="lunch_txt">Lunch:</string>
     <string name="dinner_txt">Dinner:</string>
 
+    //Recipes Screen
     <string name="title_txt">Title:</string>
     <string name="ingredients_txt">Ingredients:</string>
     <string name="directions_txt">Directions:</string>
@@ -17,5 +32,19 @@
     <string name="lunch_check_box">L</string>
     <string name="dinner_check_box">D</string>
     <string name="add_new_txt">Add New</string>
+
+    //Ingredients Screen
+    <string name="ingredient_name_txt">Name:</string>
+    <string name="unit_size_txt">Unit Size:</string>
+    <string-array name="unit_size_array">
+        <item>cup</item>
+        <item>lb.</item>
+        <item>oz.</item>
+        <item>slice</item>
+        <item>tbsp.</item>
+        <item>tsp</item>
+        <item>single</item>
+    </string-array>
+
 
 </resources>

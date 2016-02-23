@@ -10,8 +10,8 @@
     tools:context="tsnichols.foodlab.HomeScreenActivity">
 
     <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/calender_btn"
         android:layout_marginTop="97dp"
         android:layout_alignParentTop="true"
@@ -21,12 +21,11 @@
         android:layout_marginStart="80dp"
         android:clickable="false"
         android:contentDescription="@string/calender_btn"
-        android:onClick="goto_calender"
         android:background="@mipmap/calender_icon" />
 
     <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/recipes_btn"
         android:layout_marginRight="78dp"
         android:layout_marginEnd="78dp"
@@ -34,12 +33,11 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:contentDescription="@string/recipes_btn"
-        android:onClick="goto_recipes"
         android:background="@mipmap/recipes_icon" />
 
     <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/groceries_btn"
         android:layout_marginTop="62dp"
         android:contentDescription="@string/groceries_btn"
@@ -49,8 +47,8 @@
         android:layout_alignStart="@+id/calender_btn" />
 
     <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/ingredients_btn"
         android:layout_alignTop="@+id/groceries_btn"
         android:layout_alignLeft="@+id/recipes_btn"
