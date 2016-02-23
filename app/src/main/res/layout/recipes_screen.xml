@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Title:"
+        android:id="@+id/txt_title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="46dp" />
+
+    <TextView
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Add New"
+        android:id="@+id/txt_add"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="41dp"
+        android:layout_marginEnd="41dp" />
+
+    <ExpandableListView
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:id="@+id/expandableListView"
+        android:layout_alignTop="@+id/txt_title"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ingredients:"
+        android:id="@+id/txt_ingredients"
+        android:layout_below="@+id/expandableListView"
+        android:layout_alignLeft="@+id/txt_title"
+        android:layout_alignStart="@+id/txt_title"
+        android:layout_marginTop="35dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="B"
+        android:id="@+id/checkBox_breakfast"
+        android:checked="false"
+        android:layout_alignTop="@+id/txt_ingredients"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L"
+        android:id="@+id/checkBox_lunch"
+        android:checked="false"
+        android:layout_alignTop="@+id/checkBox_breakfast"
+        android:layout_toRightOf="@+id/checkBox_breakfast"
+        android:layout_toEndOf="@+id/checkBox_breakfast" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D"
+        android:id="@+id/checkBox_dinner"
+        android:checked="false"
+        android:layout_alignTop="@+id/checkBox_lunch"
+        android:layout_toRightOf="@+id/checkBox_lunch"
+        android:layout_toEndOf="@+id/checkBox_lunch" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:id="@+id/scrollView_ingredients"
+        android:layout_below="@+id/checkBox_breakfast"
+        android:layout_alignLeft="@+id/txt_ingredients"
+        android:layout_alignStart="@+id/txt_ingredients"
+        android:layout_alignEnd="@+id/txt_add"
+        android:layout_alignRight="@+id/txt_add" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Directions:"
+        android:id="@+id/txt_directions"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/scrollView_ingredients"
+        android:layout_alignLeft="@+id/scrollView_ingredients"
+        android:layout_alignStart="@+id/scrollView_ingredients" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="125dp"
+        android:id="@+id/scrollView_directions"
+        android:layout_below="@+id/txt_directions"
+        android:layout_alignLeft="@+id/txt_directions"
+        android:layout_alignStart="@+id/txt_directions"
+        android:layout_marginTop="10dp"
+        android:layout_alignRight="@+id/scrollView_ingredients"
+        android:layout_alignEnd="@+id/scrollView_ingredients" />
+</RelativeLayout>
