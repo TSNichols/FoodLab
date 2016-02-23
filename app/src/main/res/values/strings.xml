@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Food Lab</string>
+    <string name="calender_btn">Calender</string>
+    <string name="recipes_btn">Recipes</string>
+    <string name="groceries_btn">Groceries</string>
+    <string name="ingredients_btn">Ingredients</string>
+    <string name="week_txt">Week:</string>
+    <string name="day_txt">Day:</string>
+    <string name="breakfast_txt">Breakfast:</string>
+    <string name="lunch_txt">Lunch:</string>
+    <string name="dinner_txt">Dinner:</string>
+
+    <string name="title_txt">Title:</string>
+    <string name="ingredients_txt">Ingredients:</string>
+    <string name="directions_txt">Directions:</string>
+    <string name="breakfast_check_box">B</string>
+    <string name="lunch_check_box">L</string>
+    <string name="dinner_check_box">D</string>
+    <string name="add_new_txt">Add New</string>
+
 </resources>
