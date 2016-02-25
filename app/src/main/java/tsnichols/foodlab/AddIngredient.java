@@ -18,18 +18,18 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this dialog fragment
-        View view = inflater.inflate(R.layout.fragment_add_ingredient, container, false);
-        setCancelable(false);
+    View view = inflater.inflate(R.layout.fragment_add_ingredient, container, false);
+    setCancelable(false);
 
-        add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
-        cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
+    add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
+    cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
 
-        add_btn.setOnClickListener(this);
-        cancel_btn.setOnClickListener(this);
+    add_btn.setOnClickListener(this);
+    cancel_btn.setOnClickListener(this);
 
 
-        return view;
-    }
+    return view;
+}
 
     public void onClick(View view) {
         if (view.getId() == R.id.btn_dialog_add_ingred) {

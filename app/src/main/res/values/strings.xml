@@ -49,14 +49,16 @@
     <string name="new_ingredient">New Ingredient</string>
     <string name="new_unit_size">Add Size</string>
 
-    //Add Ingredients Fragment
+    //Add Ingredients Dialog Fragment
     <string name="enter_new_ingredient">Enter Ingredient Name</string>
     <string name="select_unit_size">Select Unit Size:</string>
     <string name="add_ingred_btn">Add Ingredient</string>
     <string name="add_ingred_cancel">Cancel</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    //Add Size Dialog Fragment
+    <string name="enter_new_size">Enter Size Name</string>
+    <string name="add_size_btn">Add Size</string>
+    <string name="add_size_cancel">Cancel</string>
 
 
 </resources>

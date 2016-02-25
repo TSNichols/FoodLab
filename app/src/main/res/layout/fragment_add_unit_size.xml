@@ -1,13 +1,39 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="tsnichols.foodlab.AddUnitSize">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_enter_size_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="@string/enter_new_size" />
 
-</FrameLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_size_cancel"
+        android:id="@+id/btn_dialog_cancel_size"
+        android:layout_below="@+id/editText_enter_size_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="27dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_size_btn"
+        android:id="@+id/btn_dialog_add_size"
+        android:layout_alignTop="@+id/btn_dialog_cancel_size"
+        android:layout_toRightOf="@+id/btn_dialog_cancel_size"
+        android:layout_toEndOf="@+id/btn_dialog_cancel_size"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp" />
+
+</RelativeLayout>

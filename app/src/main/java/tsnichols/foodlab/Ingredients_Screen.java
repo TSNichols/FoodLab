@@ -24,4 +24,10 @@ public class Ingredients_Screen extends AppCompatActivity {
         addIngredient.show(getFragmentManager(),"AddIngredient");
     }
 
+    public void Add_Size_Method(View v){
+
+        AddUnitSize addUnitSize = new AddUnitSize();
+        addUnitSize.show(getFragmentManager(), "AddUnitSize");
+    }
+
 }
