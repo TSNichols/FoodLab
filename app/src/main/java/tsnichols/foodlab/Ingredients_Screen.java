@@ -10,6 +10,7 @@ import android.widget.Spinner;
 public class Ingredients_Screen extends AppCompatActivity {
 
     Button New_Size_BTN;
+    Spinner unitSizeSpin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class Ingredients_Screen extends AppCompatActivity {
         setContentView(R.layout.ingredients_screen);
 
         New_Size_BTN = (Button) findViewById(R.id.btn_new_size);
+        unitSizeSpin = (Spinner) findViewById(R.id.spin_unit_size);
     }
 
 
