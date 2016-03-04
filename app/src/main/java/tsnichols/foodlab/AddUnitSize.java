@@ -42,10 +42,9 @@ public class AddUnitSize extends DialogFragment implements View.OnClickListener 
 
     public void onClick(View view) {
 
-        EditText unitNew_edittext = (EditText) view.findViewById(R.id.editText_enter_size_name);
-
         if (view.getId() == R.id.btn_dialog_add_size) {
             if (unitSizeEditText.getText().length() != 0) {
+
                 Toast.makeText(getActivity(), "Size added", Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(getActivity(), "Add was clicked", Toast.LENGTH_SHORT).show();
@@ -54,5 +53,6 @@ public class AddUnitSize extends DialogFragment implements View.OnClickListener 
             Toast.makeText(getActivity(), "Cancel was clicked", Toast.LENGTH_SHORT).show();
             dismiss();
         }
+
     }
 }
