@@ -36,16 +36,6 @@
     //Ingredients Screen
     <string name="ingredient_name_txt">Name:</string>
     <string name="unit_size_txt">Unit Size:</string>
-    <string-array name="ingredient_name_array"></string-array>
-    <string-array name="unit_size_array">
-        <item>cup</item>
-        <item>lb.</item>
-        <item>oz.</item>
-        <item>slice</item>
-        <item>tbsp.</item>
-        <item>tsp</item>
-        <item>single</item>
-    </string-array>
     <string name="new_ingredient">New Ingredient</string>
     <string name="new_unit_size">Add Size</string>
 
