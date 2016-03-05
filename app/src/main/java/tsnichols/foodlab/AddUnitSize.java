@@ -28,14 +28,14 @@ public class AddUnitSize extends DialogFragment implements View.OnClickListener 
         // Inflate the layout for this dialog fragment
         View view = inflater.inflate(R.layout.fragment_add_unit_size, container, false);
         setCancelable(false);
+        //
 
         add_size_btn = (Button) view.findViewById(R.id.btn_dialog_add_size);
         cancel_size_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_size);
+        unitSizeEditText = (EditText) view.findViewById(R.id.editText_enter_size_name);
 
         add_size_btn.setOnClickListener(this);
         cancel_size_btn.setOnClickListener(this);
-
-        unitSizeEditText = (EditText) view.findViewById(R.id.editText_enter_size_name);
 
 
         return view;

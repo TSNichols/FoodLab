@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
 
     Button add_btn;
     Button cancel_btn;
+    EditText eTxtIngredName;
     Spinner unitSizeSpin;
 
     @Override
@@ -22,13 +24,18 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
         // Inflate the layout for this dialog fragment
         View view = inflater.inflate(R.layout.fragment_add_ingredient, container, false);
         setCancelable(false);
+        //
 
+        // Instantiate objects
         add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
         cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
+        eTxtIngredName = (EditText) view.findViewById(R.id.etxt_add_ingredient_name);
         unitSizeSpin = (Spinner) view.findViewById(R.id.spin_unit_size);
 
+        // Tells the spinner what objects to have
         unitSizeSpin.setAdapter(Ingredients_Screen.unitSizeAdapter);
 
+        // Click listeners
         add_btn.setOnClickListener(this);
         cancel_btn.setOnClickListener(this);
 
@@ -38,7 +45,14 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
 
     public void onClick(View view) {
         if (view.getId() == R.id.btn_dialog_add_ingred) {
-            Toast.makeText(getActivity(), "Add was clicked", Toast.LENGTH_SHORT).show();
+
+            // If there is anything in the text box
+            if (eTxtIngredName.getText().length() != 0) {
+                Ingredients_Screen.ingredientList.add(eTxtIngredName.getText().toString());
+                Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
+                Toast.makeText(getActivity(), eTxtIngredName.getText() + " added", Toast.LENGTH_SHORT).show();
+                eTxtIngredName.setText("");
+            }
             dismiss();
         }
         else {
