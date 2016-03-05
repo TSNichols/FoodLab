@@ -6,26 +6,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddIngredient extends DialogFragment implements View.OnClickListener {
 
     Button add_btn;
     Button cancel_btn;
+    Spinner unitSizeSpin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this dialog fragment
-    View view = inflater.inflate(R.layout.fragment_add_ingredient, container, false);
-    setCancelable(false);
+        View view = inflater.inflate(R.layout.fragment_add_ingredient, container, false);
+        setCancelable(false);
 
-    add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
-    cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
+        add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
+        cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
+        unitSizeSpin = (Spinner) view.findViewById(R.id.spin_unit_size);
 
-    add_btn.setOnClickListener(this);
-    cancel_btn.setOnClickListener(this);
+        unitSizeSpin.setAdapter(Ingredients_Screen.unitSizeAdapter);
+
+        add_btn.setOnClickListener(this);
+        cancel_btn.setOnClickListener(this);
 
 
     return view;
