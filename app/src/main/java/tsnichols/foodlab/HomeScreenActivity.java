@@ -17,11 +17,22 @@ public class HomeScreenActivity extends AppCompatActivity {
     ImageButton btn_groceries;
     ImageButton btn_ingredients;
 
+    /***********************
+    MyDBHandler dbHandler;
+    *************************/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
         addListenerOnButton();
+
+        /*****************************
+        // DB example code
+        dbHandler = new MyDBHandler(this, null, null, 1);
+        printDatabase();
+         ******************************/
+
     }
 
     public void addListenerOnButton(){
@@ -57,8 +68,30 @@ public class HomeScreenActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
+    /*********************************************
+
+    // Add an ingredient to database
+    public void addButtonClicked(View view) {
+        DBAddIngredient ingredientName = new DBAddIngredient(textfield.getText().toString(), spinneritem.getText().toString());
+        dbHandler.addIngredient(ingredientName);
+        printDatabase();
+    }
+
+    // Delete an ingredient from database
+    public void deleteButtonClicked(View view) {
+        String inputText = textfield.getText().toString();
+        dbHandler.deleteIngredient(inputText);
+        printDatabase();
+    }
+
+    // Make a string out of database
+    private void printDatabase() {
+        String dbString = dbHandler.databaseToString();
+        //Then do something with dbString...
+    }
+
+    ***************************************************/
 
 }

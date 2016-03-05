@@ -61,7 +61,7 @@ public class Ingredients_Screen extends AppCompatActivity {
     }
 
 
-    
+
 
 
 
