@@ -25,12 +25,13 @@ public class Ingredients_Screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ingredients_screen);
 
+        // Instantiate objects
         New_Size_BTN = (Button) findViewById(R.id.btn_new_size);
         unitSizeSpin = (Spinner) findViewById(R.id.spin_unit_size);
         ingredientsSpin = (Spinner) findViewById(R.id.spin_ingredient_name);
 
 
-        // Needed for spinner item to display items correctly
+        // Needed for spinners to display the array lists
         unitSizeList = new ArrayList<String>();
         unitSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, unitSizeList);
         unitSizeSpin.setAdapter(unitSizeAdapter);
@@ -41,6 +42,8 @@ public class Ingredients_Screen extends AppCompatActivity {
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //
+
+
     }
 
     // Method called in button attributes
@@ -56,5 +59,10 @@ public class Ingredients_Screen extends AppCompatActivity {
         AddUnitSize addUnitSize = new AddUnitSize();
         addUnitSize.show(getFragmentManager(), "AddUnitSize");
     }
+
+
+    
+
+
 
 }
