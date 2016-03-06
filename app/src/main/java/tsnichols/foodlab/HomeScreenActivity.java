@@ -1,8 +1,6 @@
 package tsnichols.foodlab;
 
 import android.support.v7.app.AppCompatActivity;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -17,9 +15,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     ImageButton btn_groceries;
     ImageButton btn_ingredients;
 
-    /***********************
     MyDBHandler dbHandler;
-    *************************/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +23,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.home_screen);
         addListenerOnButton();
 
-        /*****************************
-        // DB example code
         dbHandler = new MyDBHandler(this, null, null, 1);
-        printDatabase();
-         ******************************/
-
     }
 
+    // Listener for buttons
     public void addListenerOnButton(){
 
         btn_calender = (ImageButton) findViewById(R.id.calender_btn);
@@ -77,6 +69,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         DBAddIngredient ingredientName = new DBAddIngredient(textfield.getText().toString(), spinneritem.getText().toString());
         dbHandler.addIngredient(ingredientName);
         printDatabase();
+        // Or update spinners etc...
     }
 
     // Delete an ingredient from database
@@ -84,6 +77,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         String inputText = textfield.getText().toString();
         dbHandler.deleteIngredient(inputText);
         printDatabase();
+        // Or update spinners etc...
     }
 
     // Make a string out of database
