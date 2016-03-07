@@ -61,7 +61,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     // Retrieve all records and populate into List<String>
     public List<DBAddIngredient> databaseToList() {
-        
+
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT " +
                 COLUMN_ID + "," +
@@ -87,7 +87,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
-    // Output DB as a string
+    // Output DB as a string - not a function way to use this
     public String databaseToString(){
         String dbString = "";
         SQLiteDatabase db = getWritableDatabase();

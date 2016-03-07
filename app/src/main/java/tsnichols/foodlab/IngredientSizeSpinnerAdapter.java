@@ -1,21 +1,21 @@
 package tsnichols.foodlab;
 
-        import android.content.Context;
-        import android.graphics.Color;
-        import android.view.Gravity;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.ArrayAdapter;
-        import android.widget.TextView;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
-        import java.util.List;
+import java.util.List;
 
-public class IngredientSpinnerAdapter extends ArrayAdapter<DBAddIngredient> {
+public class IngredientSizeSpinnerAdapter extends ArrayAdapter<DBAddIngredient> {
 
     private Context mContext;
     private List<DBAddIngredient> mValues;
 
-    public IngredientSpinnerAdapter(Context context, int textViewResourceId, List<DBAddIngredient> objects) {
+    public IngredientSizeSpinnerAdapter(Context context, int textViewResourceId, List<DBAddIngredient> objects) {
         super(context, textViewResourceId, objects);
         this.mContext = context;
         this.mValues = objects;
@@ -43,7 +43,7 @@ public class IngredientSpinnerAdapter extends ArrayAdapter<DBAddIngredient> {
         TextView label = new TextView(mContext);
         label.setTextColor(Color.BLACK);
         label.setTextSize(18);
-        label.setText(" " + mValues.get(position).get_ingredientName());
+        label.setText(" " + mValues.get(position).get_ingredientSize());
         label.setHeight(50);
         label.setGravity(Gravity.START | Gravity.CENTER );
         return label;
@@ -57,7 +57,7 @@ public class IngredientSpinnerAdapter extends ArrayAdapter<DBAddIngredient> {
         TextView label = new TextView(mContext);
         label.setTextColor(Color.BLACK);
         label.setTextSize(18);
-        label.setText(" " + mValues.get(position).get_ingredientName());
+        label.setText(" " + mValues.get(position).get_ingredientSize());
         label.setHeight(70);
         label.setGravity(Gravity.START | Gravity.CENTER );
 
