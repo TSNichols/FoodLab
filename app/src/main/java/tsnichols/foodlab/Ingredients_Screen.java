@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ingredients_Screen extends AppCompatActivity {
 
@@ -16,8 +18,10 @@ public class Ingredients_Screen extends AppCompatActivity {
     Spinner ingredientsSpin;
     public static ArrayList<String> unitSizeList;
     public static ArrayAdapter<String> unitSizeAdapter;
-    public static ArrayList<String> ingredientList;
-    public static ArrayAdapter<String> ingredientAdapter;
+    //public static ArrayList<String> ingredientList;
+    //public static ArrayAdapter<String> ingredientAdapter;
+    public static IngredientSpinnerAdapter ingredientAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +40,16 @@ public class Ingredients_Screen extends AppCompatActivity {
         unitSizeSpin.setAdapter(unitSizeAdapter);
         unitSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //
-        ingredientList = new ArrayList<String>();
-        ingredientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredientList);
+        //ingredientList = new ArrayList<String>();
+        //ingredientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredientList);
+        //ingredientsSpin.setAdapter(ingredientAdapter);
+        //ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //
+        List<DBAddIngredient> ingredients = HomeScreenActivity.dbHandler.databaseToList();
+        ingredientAdapter = new IngredientSpinnerAdapter(this, android.R.layout.simple_spinner_item, ingredients);
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //
-
-
     }
 
     // Method called in button attributes

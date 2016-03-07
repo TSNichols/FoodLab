@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.content.Context;
 import android.content.ContentValues;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
@@ -15,25 +18,28 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_INGREDIENT = "ingredientName";
     public static final String COLUMN_SIZE = "ingredientSize";
 
+
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_INGREDIENTS + "(" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT " +
-                COLUMN_INGREDIENT + " TEXT " +
-                COLUMN_SIZE + " TEXT " +
-                ");";
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_INGREDIENT + " TEXT, " +
+                COLUMN_SIZE + " TEXT );";
         db.execSQL(query);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
         onCreate(db);
     }
+
 
     // Add a new row to the database
     public void addIngredient(DBAddIngredient ingredient) {
@@ -45,11 +51,41 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+
     // Delete a row from the database
     public void deleteIngredient(String ingredientName) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_INGREDIENTS + " WHERE " + COLUMN_INGREDIENT + "=\"" + ingredientName + "\";");
     }
+
+
+    // Retrieve all records and populate into List<String>
+    public List<DBAddIngredient> databaseToList() {
+        
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " +
+                COLUMN_ID + "," +
+                COLUMN_INGREDIENT + "," +
+                COLUMN_SIZE +
+                " FROM " + TABLE_INGREDIENTS;
+        List<DBAddIngredient> ingredientList = new ArrayList<DBAddIngredient>();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            do {
+                DBAddIngredient ingredient = new DBAddIngredient();
+                ingredient.set_ingredientName(c.getString(c.getColumnIndex(COLUMN_INGREDIENT)));
+                ingredient.set_ingredientSize(c.getString(c.getColumnIndex(COLUMN_SIZE)));
+                ingredientList.add(ingredient);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return ingredientList;
+    }
+
 
     // Output DB as a string
     public String databaseToString(){

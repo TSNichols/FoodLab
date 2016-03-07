@@ -9,9 +9,9 @@ public class DBAddIngredient {
     public DBAddIngredient(){
     }
 
-    public DBAddIngredient(String ingredientName, String ingredientSize) {
-        this._ingredientName = ingredientName;
-        this._ingredientSize = ingredientSize;
+    public DBAddIngredient(String _ingredientName, String _ingredientSize) {
+        this._ingredientName = _ingredientName;
+        this._ingredientSize = _ingredientSize;
     }
 
     public void set_id(int _id) {

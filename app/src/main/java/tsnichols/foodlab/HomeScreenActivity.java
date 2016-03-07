@@ -15,7 +15,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     ImageButton btn_groceries;
     ImageButton btn_ingredients;
 
-    MyDBHandler dbHandler;
+    public static MyDBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

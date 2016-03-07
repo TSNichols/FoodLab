@@ -14,7 +14,7 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
 
     Button add_btn;
     Button cancel_btn;
-    EditText eTxtIngredName;
+    EditText eTxtIngredientName;
     Spinner unitSizeSpin;
 
     @Override
@@ -29,7 +29,7 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
         // Instantiate objects
         add_btn = (Button) view.findViewById(R.id.btn_dialog_add_ingred);
         cancel_btn = (Button) view.findViewById(R.id.btn_dialog_cancel_ingred);
-        eTxtIngredName = (EditText) view.findViewById(R.id.etxt_add_ingredient_name);
+        eTxtIngredientName = (EditText) view.findViewById(R.id.etxt_add_ingredient_name);
         unitSizeSpin = (Spinner) view.findViewById(R.id.spin_unit_size);
 
         // Tells the spinner what objects to have
@@ -47,11 +47,15 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
         if (view.getId() == R.id.btn_dialog_add_ingred) {
 
             // If there is anything in the text box
-            if (eTxtIngredName.getText().length() != 0) {
-                Ingredients_Screen.ingredientList.add(eTxtIngredName.getText().toString());
-                Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
-                Toast.makeText(getActivity(), eTxtIngredName.getText() + " added", Toast.LENGTH_SHORT).show();
-                eTxtIngredName.setText("");
+            if (eTxtIngredientName.getText().length() != 0) {
+
+                DBAddIngredient ingredientName = new DBAddIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
+                HomeScreenActivity.dbHandler.addIngredient(ingredientName);
+
+                //Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
+
+                Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
+                eTxtIngredientName.setText("");
             }
             dismiss();
         }
