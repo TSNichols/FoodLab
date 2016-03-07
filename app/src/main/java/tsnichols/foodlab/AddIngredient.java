@@ -52,8 +52,6 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
                 DBAddIngredient ingredientName = new DBAddIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
                 HomeScreenActivity.dbHandler.addIngredient(ingredientName);
 
-                //Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
-
                 Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
                 eTxtIngredientName.setText("");
             }

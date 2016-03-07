@@ -59,8 +59,7 @@ public class IngredientSizeSpinnerAdapter extends ArrayAdapter<DBAddIngredient> 
         label.setTextSize(18);
         label.setText(" " + mValues.get(position).get_ingredientSize());
         label.setHeight(70);
-        label.setGravity(Gravity.START | Gravity.CENTER );
-
+        label.setGravity(Gravity.START | Gravity.CENTER);
         return label;
     }
 }

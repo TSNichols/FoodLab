@@ -86,6 +86,30 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return ingredientList;
     }
 
+    // Retrieve list of unique sizes
+    public List<DBAddIngredient> databaseToSizeList() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT DISTINCT " +
+                COLUMN_SIZE +
+                " FROM " + TABLE_INGREDIENTS;
+        List<DBAddIngredient> ingredientSizeList = new ArrayList<DBAddIngredient>();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            do {
+                DBAddIngredient ingredientSize = new DBAddIngredient();
+                ingredientSize.set_ingredientSize(c.getString(c.getColumnIndex(COLUMN_SIZE)));
+                ingredientSizeList.add(ingredientSize);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        db.close();
+        return ingredientSizeList;
+    }
+
 
     // Output DB as a string - not a function way to use this
     public String databaseToString(){
