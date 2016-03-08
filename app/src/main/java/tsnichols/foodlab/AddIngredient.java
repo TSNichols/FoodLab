@@ -67,6 +67,7 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
 
                 // Toast unnecessary - just a debugging tool
                 Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
+
                 eTxtIngredientName.setText("");
             }
             dismiss();

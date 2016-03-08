@@ -58,6 +58,50 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_INGREDIENTS + " WHERE " + COLUMN_INGREDIENT + "=\"" + ingredientName + "\";");
     }
 
+    /*********************************************************** */
+    // Get Ingredient ID for selected ingredient
+    public int getIngredientID(String selectedIngredient) {
+        int ingredientID = 0;
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_INGREDIENTS +
+                " WHERE " + COLUMN_INGREDIENT + "=\"" + selectedIngredient + "\";";
+
+
+        Cursor c = db.rawQuery(query, null);
+
+        c.moveToFirst();
+
+        while(!c.isAfterLast()){
+            if(c.getString(c.getColumnIndex(COLUMN_ID))!= null) {
+                ingredientID = c.getInt(c.getColumnIndex(COLUMN_ID));
+            }
+        }
+
+        c.close();
+        db.close();
+
+        return ingredientID;
+    }
+
+    // Get size based on ingredient ID
+    public String getSizeFromID(Integer ingredientID) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " + COLUMN_SIZE + " FROM " + TABLE_INGREDIENTS +
+                " WHERE " + COLUMN_ID + "=\"" + ingredientID + "\";";
+
+        String ingredientSize;
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+
+        ingredientSize = c.getString(c.getColumnIndex(COLUMN_SIZE));
+
+        c.close();
+        db.close();
+
+        return ingredientSize;
+    }
+    /************************************************************ */
 
     // Retrieve all records and populate into List<String>
     public List<DBAddIngredient> databaseToList() {
@@ -115,7 +159,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
-    // Output DB as a string - not a function way to use this
+    // Output DB as a string - not a functional way to use this
     public String databaseToString(){
         String dbString = "";
         SQLiteDatabase db = getWritableDatabase();
@@ -139,4 +183,5 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
         return dbString;
     }
+    //**********************************************************
 }

@@ -3,18 +3,20 @@ package tsnichols.foodlab;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Ingredients_Screen extends AppCompatActivity {
 
-    Button New_Size_BTN;
-    Spinner unitSizeSpin;
-    Spinner ingredientsSpin;
+    // Objects
+    public static Spinner unitSizeSpin;
+    public static Spinner ingredientsSpin;
 
     // Array list independent of ingredient database
     public static ArrayList<String> unitSizeList;
@@ -32,7 +34,6 @@ public class Ingredients_Screen extends AppCompatActivity {
         setContentView(R.layout.ingredients_screen);
 
         // Instantiate objects
-        New_Size_BTN = (Button) findViewById(R.id.btn_new_size);
         unitSizeSpin = (Spinner) findViewById(R.id.spin_unit_size);
         ingredientsSpin = (Spinner) findViewById(R.id.spin_ingredient_name);
 
@@ -54,6 +55,8 @@ public class Ingredients_Screen extends AppCompatActivity {
         ingredientAdapter = new IngredientSpinnerAdapter(this, android.R.layout.simple_spinner_item, ingredients);
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
     }
 
 

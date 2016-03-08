@@ -74,4 +74,14 @@
         android:layout_marginStart="32dp"
         android:onClick="Add_Ingredient_Method" />
 
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txtTest"
+        android:layout_below="@+id/spin_unit_size"
+        android:layout_alignLeft="@+id/btn_new_size"
+        android:layout_alignStart="@+id/btn_new_size"
+        android:layout_marginTop="25dp" />
+
 </RelativeLayout>
