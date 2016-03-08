@@ -67,7 +67,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_ID + "," +
                 COLUMN_INGREDIENT + "," +
                 COLUMN_SIZE +
-                " FROM " + TABLE_INGREDIENTS;
+                " FROM " + TABLE_INGREDIENTS +
+                " ORDER BY " + COLUMN_INGREDIENT +
+                " COLLATE NOCASE ASC";
         List<DBAddIngredient> ingredientList = new ArrayList<DBAddIngredient>();
 
         Cursor c = db.rawQuery(query, null);
@@ -92,7 +94,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT DISTINCT " +
                 COLUMN_SIZE +
-                " FROM " + TABLE_INGREDIENTS;
+                " FROM " + TABLE_INGREDIENTS +
+                " ORDER BY " + COLUMN_SIZE +
+                " COLLATE NOCASE ASC";
         List<DBAddIngredient> ingredientSizeList = new ArrayList<DBAddIngredient>();
 
         Cursor c = db.rawQuery(query, null);

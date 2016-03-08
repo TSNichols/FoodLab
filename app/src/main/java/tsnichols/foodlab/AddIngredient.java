@@ -49,9 +49,23 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
             // If there is anything in the text box
             if (eTxtIngredientName.getText().length() != 0) {
 
+                // Pulls data from text box and spinner to add to database.
                 DBAddIngredient ingredientName = new DBAddIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
                 HomeScreenActivity.dbHandler.addIngredient(ingredientName);
 
+                // Clears lists
+                Ingredients_Screen.ingredients.clear();
+                Ingredients_Screen.ingredientSize.clear();
+
+                // ReAdd all entries from database
+                Ingredients_Screen.ingredients.addAll(HomeScreenActivity.dbHandler.databaseToList());
+                Ingredients_Screen.ingredientSize.addAll(HomeScreenActivity.dbHandler.databaseToSizeList());
+
+                // Notify changes to adapter - Not sure if this is needed
+                Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
+                Ingredients_Screen.ingredientSizeAdapter.notifyDataSetChanged();
+
+                // Toast unnecessary - just a debugging tool
                 Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
                 eTxtIngredientName.setText("");
             }

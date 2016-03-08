@@ -54,8 +54,8 @@ public class Ingredients_Screen extends AppCompatActivity {
         ingredientAdapter = new IngredientSpinnerAdapter(this, android.R.layout.simple_spinner_item, ingredients);
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
     }
+
 
 
     // Method called in button attributes
