@@ -58,10 +58,10 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
                 Ingredients_Screen.ingredientSize.clear();
 
                 // ReAdd all entries from database
-                Ingredients_Screen.ingredients.addAll(HomeScreenActivity.dbHandler.databaseToList());
-                Ingredients_Screen.ingredientSize.addAll(HomeScreenActivity.dbHandler.databaseToSizeList());
+                Ingredients_Screen.ingredients.addAll(HomeScreenActivity.dbHandler.databaseIngredientList());
+                Ingredients_Screen.ingredientSize.addAll(HomeScreenActivity.dbHandler.databaseSizeList());
 
-                // Notify changes to adapter - Not sure if this is needed
+                // Notify changes to adapter
                 Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
                 Ingredients_Screen.ingredientSizeAdapter.notifyDataSetChanged();
 

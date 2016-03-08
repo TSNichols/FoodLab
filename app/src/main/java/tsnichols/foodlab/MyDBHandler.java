@@ -61,7 +61,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
     /*********************************************************** */
     // Get Ingredient ID for selected ingredient
     public int getIngredientID(String selectedIngredient) {
+
         int ingredientID = 0;
+
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_INGREDIENTS +
                 " WHERE " + COLUMN_INGREDIENT + "=\"" + selectedIngredient + "\";";
@@ -69,12 +71,18 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         Cursor c = db.rawQuery(query, null);
 
-        c.moveToFirst();
+//        c.moveToFirst();
+//
+//        while(!c.isAfterLast()){
+//            if(c.getString(c.getColumnIndex(COLUMN_ID))!= null) {
+//                ingredientID = c.getInt(c.getColumnIndex(COLUMN_ID));
+//            }
+//        }
 
-        while(!c.isAfterLast()){
-            if(c.getString(c.getColumnIndex(COLUMN_ID))!= null) {
+        if (c.moveToFirst()) {
+            do {
                 ingredientID = c.getInt(c.getColumnIndex(COLUMN_ID));
-            }
+            } while (c.moveToNext());
         }
 
         c.close();
@@ -101,10 +109,59 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         return ingredientSize;
     }
+
     /************************************************************ */
 
-    // Retrieve all records and populate into List<String>
-    public List<DBAddIngredient> databaseToList() {
+    // Retrieve all ingredients and populate List<String>
+    public List<String> databaseIngredientList() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " +
+                COLUMN_INGREDIENT +
+                " FROM " + TABLE_INGREDIENTS +
+                " ORDER BY " + COLUMN_INGREDIENT +
+                " COLLATE NOCASE ASC";
+        List<String> ingredientNameList = new ArrayList<>();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            do {
+                ingredientNameList.add(c.getString(c.getColumnIndex(COLUMN_INGREDIENT)));
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return ingredientNameList;
+    }
+
+    // Retrieve distinct sizes and populate List<String>
+    public List<String> databaseSizeList() {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT DISTINCT " +
+                COLUMN_SIZE +
+                " FROM " + TABLE_INGREDIENTS +
+                " ORDER BY " + COLUMN_SIZE +
+                " COLLATE NOCASE ASC";
+        List<String> ingredientSizeList = new ArrayList<>();
+
+        Cursor c = db.rawQuery(query, null);
+
+        if (c.moveToFirst()) {
+            do {
+                ingredientSizeList.add(c.getString(c.getColumnIndex(COLUMN_SIZE)));
+            } while (c.moveToNext());
+        }
+        c.close();
+        db.close();
+
+        return ingredientSizeList;
+    }
+
+    // Retrieve all records and populate into List<DBAddIngredient>
+    public List<DBAddIngredient> databaseAllToList() {
 
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT " +
@@ -121,6 +178,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         if (c.moveToFirst()) {
             do {
                 DBAddIngredient ingredient = new DBAddIngredient();
+                ingredient.set_id(c.getInt(c.getColumnIndex(COLUMN_ID)));
                 ingredient.set_ingredientName(c.getString(c.getColumnIndex(COLUMN_INGREDIENT)));
                 ingredient.set_ingredientSize(c.getString(c.getColumnIndex(COLUMN_SIZE)));
                 ingredientList.add(ingredient);

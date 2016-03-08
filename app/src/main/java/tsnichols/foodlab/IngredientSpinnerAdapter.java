@@ -60,13 +60,6 @@ public class IngredientSpinnerAdapter extends ArrayAdapter<DBAddIngredient> {
         label.setText(" " + mValues.get(position).get_ingredientName());
         label.setHeight(70);
         label.setGravity(Gravity.START | Gravity.CENTER);
-
         return label;
-    }
-
-    @Override
-    public void notifyDataSetChanged() {
-        super.notifyDataSetChanged();
-
     }
 }

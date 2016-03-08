@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -23,10 +24,16 @@ public class Ingredients_Screen extends AppCompatActivity {
     public static ArrayAdapter<String> unitSizeAdapter;
 
     // Adapters to display database info
-    public static IngredientSpinnerAdapter ingredientAdapter;
-    public static IngredientSizeSpinnerAdapter ingredientSizeAdapter;
-    public static List<DBAddIngredient> ingredients;
-    public static List<DBAddIngredient> ingredientSize;
+    public static ArrayAdapter<String> ingredientAdapter;
+    public static ArrayAdapter<String> ingredientSizeAdapter;
+
+    // Lists from ingredient database
+    public static List<String> ingredients;
+    public static List<String> ingredientSize;
+
+    TextView mTxtTestBox;
+    TextView mTxtTestBox2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +49,40 @@ public class Ingredients_Screen extends AppCompatActivity {
         unitSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, unitSizeList);
 
         // List holds all database entries, each with name and size attributes; Adapter pulls each for each spinner
-        ingredients = HomeScreenActivity.dbHandler.databaseToList();
+        ingredients = HomeScreenActivity.dbHandler.databaseIngredientList();
         // List only holds unique size entries with only size attributes
-        ingredientSize = HomeScreenActivity.dbHandler.databaseToSizeList();
+        ingredientSize = HomeScreenActivity.dbHandler.databaseSizeList();
 
         // List generated only has unique sizes from database - adapter pulls only size attribute (only attribute for this list)
-        ingredientSizeAdapter = new IngredientSizeSpinnerAdapter(this, android.R.layout.simple_spinner_item, ingredientSize);
+        ingredientSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredientSize);
         unitSizeSpin.setAdapter(ingredientSizeAdapter);
         ingredientSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Adapter pulls name attribute from list
-        ingredientAdapter = new IngredientSpinnerAdapter(this, android.R.layout.simple_spinner_item, ingredients);
+        ingredientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredients);
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
-    }
+        /************************************************************************** */
+        mTxtTestBox = (TextView) findViewById(R.id.txtTest);
+        mTxtTestBox2 = (TextView) findViewById(R.id.txtTest2);
 
+        ingredientsSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String ingredientName = parent.getItemAtPosition(position).toString();
+                mTxtTestBox.setText(ingredientName);
+                //mTxtTestBox2.setText(HomeScreenActivity.dbHandler.getIngredientID(ingredientName));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        /*************************************************************************** */
+    }
 
 
     // Method called in button attributes
