@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -73,7 +74,7 @@ public class Ingredients_Screen extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String ingredientName = parent.getItemAtPosition(position).toString();
                 mTxtTestBox.setText(ingredientName);
-                //mTxtTestBox2.setText(HomeScreenActivity.dbHandler.getIngredientID(ingredientName));
+                mTxtTestBox2.setText(HomeScreenActivity.dbHandler.getIngredientSize(ingredientName));
             }
 
             @Override

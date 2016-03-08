@@ -41,13 +41,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
-    // Add a new row to the database
-    public void addIngredient(DBAddIngredient ingredient) {
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_INGREDIENT, ingredient.get_ingredientName());
-        values.put(COLUMN_SIZE, ingredient.get_ingredientSize());
+    // Add ingredient to database
+    public void addIngredient(String name, String size) {
         SQLiteDatabase db = getWritableDatabase();
-        db.insert(TABLE_INGREDIENTS, null, values);
+
+        ContentValues row = new ContentValues();
+        row.put(COLUMN_INGREDIENT, name);
+        row.put(COLUMN_SIZE, size);
+
+        db.insert(TABLE_INGREDIENTS, null, row);
         db.close();
     }
 
@@ -58,59 +60,31 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_INGREDIENTS + " WHERE " + COLUMN_INGREDIENT + "=\"" + ingredientName + "\";");
     }
 
-    /*********************************************************** */
     // Get Ingredient ID for selected ingredient
-    public int getIngredientID(String selectedIngredient) {
+    public String getIngredientSize(String selectedIngredient) {
 
-        int ingredientID = 0;
-
-        SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + COLUMN_ID + " FROM " + TABLE_INGREDIENTS +
-                " WHERE " + COLUMN_INGREDIENT + "=\"" + selectedIngredient + "\";";
-
-
-        Cursor c = db.rawQuery(query, null);
-
-//        c.moveToFirst();
-//
-//        while(!c.isAfterLast()){
-//            if(c.getString(c.getColumnIndex(COLUMN_ID))!= null) {
-//                ingredientID = c.getInt(c.getColumnIndex(COLUMN_ID));
-//            }
-//        }
-
-        if (c.moveToFirst()) {
-            do {
-                ingredientID = c.getInt(c.getColumnIndex(COLUMN_ID));
-            } while (c.moveToNext());
-        }
-
-        c.close();
-        db.close();
-
-        return ingredientID;
-    }
-
-    // Get size based on ingredient ID
-    public String getSizeFromID(Integer ingredientID) {
+        String ingredientSize = "";
 
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT " + COLUMN_SIZE + " FROM " + TABLE_INGREDIENTS +
-                " WHERE " + COLUMN_ID + "=\"" + ingredientID + "\";";
 
-        String ingredientSize;
-        Cursor c = db.rawQuery(query, null);
+        String[] columns = new String[]{COLUMN_SIZE};
+        String selection = COLUMN_INGREDIENT + " = ? ";
+        String[] selectArgs = new String[]{selectedIngredient};
+
+        Cursor c = db.query(TABLE_INGREDIENTS, columns, selection, selectArgs, null, null, null);
+
         c.moveToFirst();
 
-        ingredientSize = c.getString(c.getColumnIndex(COLUMN_SIZE));
+        while(!c.isAfterLast()){
+            ingredientSize = c.getString(c.getColumnIndex(COLUMN_SIZE));
+            c.moveToNext();
+        }
 
         c.close();
         db.close();
 
         return ingredientSize;
     }
-
-    /************************************************************ */
 
     // Retrieve all ingredients and populate List<String>
     public List<String> databaseIngredientList() {

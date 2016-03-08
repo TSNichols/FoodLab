@@ -49,9 +49,8 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
             // If there is anything in the text box
             if (eTxtIngredientName.getText().length() != 0) {
 
-                // Pulls data from text box and spinner to add to database.
-                DBAddIngredient ingredientName = new DBAddIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
-                HomeScreenActivity.dbHandler.addIngredient(ingredientName);
+                // Add to database
+                HomeScreenActivity.dbHandler.addIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
 
                 // Clears lists
                 Ingredients_Screen.ingredients.clear();

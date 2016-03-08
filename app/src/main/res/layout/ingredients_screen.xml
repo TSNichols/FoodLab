@@ -95,4 +95,5 @@
         android:layout_alignLeft="@+id/btn_new_ingredient"
         android:layout_alignStart="@+id/btn_new_ingredient" />
 
+
 </RelativeLayout>
