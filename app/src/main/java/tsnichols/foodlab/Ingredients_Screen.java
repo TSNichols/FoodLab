@@ -1,5 +1,6 @@
 package tsnichols.foodlab;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Ingredients_Screen extends AppCompatActivity {
 
@@ -21,16 +27,18 @@ public class Ingredients_Screen extends AppCompatActivity {
     public static Spinner ingredientsSpin;
 
     // Array list independent of ingredient database
+    /**
+     * Needs to be a constant merge of database as well as independent list
+     */
+    public static Set<String> sizeSet;
     public static ArrayList<String> unitSizeList;
-    public static ArrayAdapter<String> unitSizeAdapter;
 
     // Adapters to display database info
     public static ArrayAdapter<String> ingredientAdapter;
-    public static ArrayAdapter<String> ingredientSizeAdapter;
+    public static ArrayAdapter<String> unitSizeAdapter;
 
     // Lists from ingredient database
-    public static List<String> ingredients;
-    public static List<String> ingredientSize;
+    public static List<String> ingredients;;
 
 
     @Override
@@ -42,29 +50,29 @@ public class Ingredients_Screen extends AppCompatActivity {
         unitSizeSpin = (Spinner) findViewById(R.id.spin_unit_size);
         ingredientsSpin = (Spinner) findViewById(R.id.spin_ingredient_name);
 
-        // Array List independent of ingredient database
+        // List of sizes added with database sizes - no duplicates
         unitSizeList = new ArrayList<String>();
-        unitSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, unitSizeList);
+        sizeSet = new HashSet<String>();
 
-        // List holds all database entries, each with name and size attributes; Adapter pulls each for each spinner
+        // List of ingredients from database
         ingredients = HomeScreenActivity.dbHandler.databaseIngredientList();
-        // List only holds unique size entries with only size attributes
-        ingredientSize = HomeScreenActivity.dbHandler.databaseSizeList();
 
-        // List generated only has unique sizes from database - adapter pulls only size attribute (only attribute for this list)
-        ingredientSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredientSize);
-        unitSizeSpin.setAdapter(ingredientSizeAdapter);
-        ingredientSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Adapter pulls name attribute from list
+        // Adapters for spinners
+        unitSizeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, unitSizeList);
         ingredientAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ingredients);
+
         ingredientsSpin.setAdapter(ingredientAdapter);
+        unitSizeSpin.setAdapter(unitSizeAdapter);
+
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        unitSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        updateSizeList();
 
         ingredientsSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                unitSizeSpin.setSelection(ingredientSizeAdapter.getPosition(HomeScreenActivity.dbHandler.getIngredientSize(ingredientsSpin.getItemAtPosition(position).toString())));
+                unitSizeSpin.setSelection(unitSizeAdapter.getPosition(HomeScreenActivity.dbHandler.getIngredientSize(ingredientsSpin.getItemAtPosition(position).toString())));
             }
 
             @Override
@@ -86,6 +94,15 @@ public class Ingredients_Screen extends AppCompatActivity {
         });
     }
 
+    // Update size list
+    public static void updateSizeList() {
+        sizeSet.addAll(unitSizeList);
+        sizeSet.addAll(HomeScreenActivity.dbHandler.databaseSizeList());
+        unitSizeList.clear();
+        unitSizeList.addAll(sizeSet);
+        Collections.sort(unitSizeList);
+        unitSizeAdapter.notifyDataSetChanged();
+    }
 
     // Method called in button attributes
     public void Add_Ingredient_Method(View v) {

@@ -52,17 +52,17 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
                 // Add to database
                 HomeScreenActivity.dbHandler.addIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
 
+                // Update size list
+                Ingredients_Screen.updateSizeList();
+
                 // Clears lists
                 Ingredients_Screen.ingredients.clear();
-                Ingredients_Screen.ingredientSize.clear();
 
                 // ReAdd all entries from database
                 Ingredients_Screen.ingredients.addAll(HomeScreenActivity.dbHandler.databaseIngredientList());
-                Ingredients_Screen.ingredientSize.addAll(HomeScreenActivity.dbHandler.databaseSizeList());
 
                 // Notify changes to adapter
                 Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
-                Ingredients_Screen.ingredientSizeAdapter.notifyDataSetChanged();
 
                 // Toast unnecessary - just a debugging tool
                 Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
