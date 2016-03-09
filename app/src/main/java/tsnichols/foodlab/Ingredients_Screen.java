@@ -32,9 +32,6 @@ public class Ingredients_Screen extends AppCompatActivity {
     public static List<String> ingredients;
     public static List<String> ingredientSize;
 
-    TextView mTxtTestBox;
-    TextView mTxtTestBox2;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,25 +61,29 @@ public class Ingredients_Screen extends AppCompatActivity {
         ingredientsSpin.setAdapter(ingredientAdapter);
         ingredientAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-
-        /************************************************************************** */
-        mTxtTestBox = (TextView) findViewById(R.id.txtTest);
-        mTxtTestBox2 = (TextView) findViewById(R.id.txtTest2);
-
         ingredientsSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String ingredientName = parent.getItemAtPosition(position).toString();
-                mTxtTestBox.setText(ingredientName);
-                mTxtTestBox2.setText(HomeScreenActivity.dbHandler.getIngredientSize(ingredientName));
+                unitSizeSpin.setSelection(ingredientSizeAdapter.getPosition(HomeScreenActivity.dbHandler.getIngredientSize(ingredientsSpin.getItemAtPosition(position).toString())));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                // Nothing for now
             }
         });
-        /*************************************************************************** */
+
+        unitSizeSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                HomeScreenActivity.dbHandler.changeSize(ingredientsSpin.getSelectedItem().toString(), unitSizeSpin.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Nothing for now
+            }
+        });
     }
 
 

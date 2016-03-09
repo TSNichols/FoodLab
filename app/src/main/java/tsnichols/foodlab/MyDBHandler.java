@@ -53,6 +53,21 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    /***************************************************** */
+    // Edit size for ingredient
+    public void changeSize(String ingredient, String size) {
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_SIZE, size);
+        String whereClause = COLUMN_INGREDIENT + " = ? ";
+        String[] whereArgs = {ingredient};
+
+        db.update(TABLE_INGREDIENTS, values, whereClause, whereArgs);
+        db.close();
+    }
+    /***************************************************** */
 
     // Delete a row from the database
     public void deleteIngredient(String ingredientName) {
