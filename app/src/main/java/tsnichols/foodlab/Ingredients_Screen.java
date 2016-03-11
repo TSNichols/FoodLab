@@ -12,7 +12,9 @@ import android.widget.ListAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,10 +28,7 @@ public class Ingredients_Screen extends AppCompatActivity {
     public static Spinner unitSizeSpin;
     public static Spinner ingredientsSpin;
 
-    // Array list independent of ingredient database
-    /**
-     * Needs to be a constant merge of database as well as independent list
-     */
+    // Array list merged with database list
     public static Set<String> sizeSet;
     public static ArrayList<String> unitSizeList;
 
@@ -72,7 +71,7 @@ public class Ingredients_Screen extends AppCompatActivity {
         ingredientsSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                unitSizeSpin.setSelection(unitSizeAdapter.getPosition(HomeScreenActivity.dbHandler.getIngredientSize(ingredientsSpin.getItemAtPosition(position).toString())));
+                    unitSizeSpin.setSelection(unitSizeAdapter.getPosition(HomeScreenActivity.dbHandler.getIngredientSize(ingredientsSpin.getItemAtPosition(position).toString())));
             }
 
             @Override
@@ -84,7 +83,9 @@ public class Ingredients_Screen extends AppCompatActivity {
         unitSizeSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                HomeScreenActivity.dbHandler.changeSize(ingredientsSpin.getSelectedItem().toString(), unitSizeSpin.getItemAtPosition(position).toString());
+                if (ingredientsSpin.getSelectedItem() != null) {
+                    HomeScreenActivity.dbHandler.changeSize(ingredientsSpin.getSelectedItem().toString(), unitSizeSpin.getItemAtPosition(position).toString());
+                }
             }
 
             @Override

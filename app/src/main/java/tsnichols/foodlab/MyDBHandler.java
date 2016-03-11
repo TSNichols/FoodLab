@@ -6,13 +6,15 @@ import android.database.Cursor;
 import android.content.Context;
 import android.content.ContentValues;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "ingredients.db";
+    private static final String DATABASE_NAME = "FoodLab.db";
     public static final String TABLE_INGREDIENTS = "ingredients";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_INGREDIENT = "ingredientName";

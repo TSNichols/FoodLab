@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 public class AddIngredient extends DialogFragment implements View.OnClickListener {
 
     Button add_btn;
@@ -50,7 +52,7 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
             if (eTxtIngredientName.getText().length() != 0) {
 
                 // Add to database
-                HomeScreenActivity.dbHandler.addIngredient(eTxtIngredientName.getText().toString(), unitSizeSpin.getSelectedItem().toString());
+                HomeScreenActivity.dbHandler.addIngredient(WordUtils.capitalizeFully(eTxtIngredientName.getText().toString()), unitSizeSpin.getSelectedItem().toString());
 
                 // Update size list
                 Ingredients_Screen.updateSizeList();

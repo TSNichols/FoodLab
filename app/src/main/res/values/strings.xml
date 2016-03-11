@@ -38,6 +38,15 @@
     <string name="unit_size_txt">Unit Size:</string>
     <string name="new_ingredient">New Ingredient</string>
     <string name="new_unit_size">Add Size</string>
+    <string-array name="initial_size_list">
+        <item>Cup</item>
+        <item>Tbsp</item>
+        <item>Tsp</item>
+        <item>Single</item>
+        <item>Pinch</item>
+        <item>Ounce</item>
+        <item>ML</item>
+    </string-array>
 
     //Add Ingredients Dialog Fragment
     <string name="enter_new_ingredient">Enter Ingredient Name</string>

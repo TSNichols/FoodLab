@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.ArrayList;
 
 public class AddUnitSize extends DialogFragment implements View.OnClickListener {
@@ -46,7 +48,7 @@ public class AddUnitSize extends DialogFragment implements View.OnClickListener 
         if (view.getId() == R.id.btn_dialog_add_size) {
 
             if (unitSizeEditText.getText().length() != 0) {
-                Ingredients_Screen.unitSizeList.add(unitSizeEditText.getText().toString());
+                Ingredients_Screen.unitSizeList.add(WordUtils.capitalizeFully(unitSizeEditText.getText().toString()));
                 Ingredients_Screen.updateSizeList();
                 Toast.makeText(getActivity(), unitSizeEditText.getText() + " added", Toast.LENGTH_SHORT).show();
                 unitSizeEditText.setText("");
