@@ -13,6 +13,7 @@ public class Recipes_Screen extends AppCompatActivity {
         setContentView(R.layout.recipes_screen);
 
         FloatingActionButton fabAddNewRecipe = (FloatingActionButton) findViewById(R.id.fab_addNew);
+
         fabAddNewRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

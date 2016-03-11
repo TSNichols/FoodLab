@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
     tools:context="tsnichols.foodlab.AddIngredient">
 
 
@@ -17,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/select_unit_size"
         android:id="@+id/txt_add_ingred_dialog"
-        android:layout_alignTop="@+id/spin_unit_size"
+        android:layout_below="@id/etxt_add_ingredient_name"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="7dp" />
@@ -28,8 +29,7 @@
         android:id="@+id/spin_unit_size"
         android:layout_toRightOf="@+id/txt_add_ingred_dialog"
         android:layout_toEndOf="@+id/txt_add_ingred_dialog"
-        android:layout_below="@id/etxt_add_ingredient_name"
-        android:layout_marginTop="16dp" />
+        android:layout_below="@id/etxt_add_ingredient_name" />
 
     <Button
         android:layout_width="wrap_content"

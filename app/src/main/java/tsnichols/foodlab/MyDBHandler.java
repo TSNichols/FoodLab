@@ -35,7 +35,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_INGREDIENT_TABLE = "CREATE TABLE " + TABLE_INGREDIENTS + "(" +
@@ -59,13 +58,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_TITLE_TABLE);
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_INGREDIENTS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TITLE);
         onCreate(db);
     }
 
+/** ****************************************
+ *  Database handlers for INGREDIENTS screen
+ *  **************************************** */
 
     // Add ingredient to database
     public void addIngredient(String name, String size) {
@@ -229,7 +232,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return ingredientSizeList;
     }
 
-
     // Output DB as a string - not a functional way to use this
     public String databaseToString(){
         String dbString = "";
@@ -254,5 +256,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
         return dbString;
     }
-    //**********************************************************
+
+/** ****************************************
+ *  Database handlers for RECIPES screen
+ *  **************************************** */
+
+
 }
