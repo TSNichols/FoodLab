@@ -15,10 +15,20 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "FoodLab.db";
+
     public static final String TABLE_INGREDIENTS = "ingredients";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_INGREDIENT = "ingredientName";
     public static final String COLUMN_SIZE = "ingredientSize";
+
+    public static final String TABLE_RECIPES = "recipes";
+    public static final String COLUMN_TITLE = "title";
+    public static final String COLUMN_B = "b";
+    public static final String COLUMN_L = "l";
+    public static final String COLUMN_D = "d";
+
+    public static final String TABLE_TITLE = "title";
+    public static final String COLUMN_QUANTITY = "quantity";
 
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -28,11 +38,25 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_INGREDIENTS + "(" +
+        String CREATE_INGREDIENT_TABLE = "CREATE TABLE " + TABLE_INGREDIENTS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_INGREDIENT + " TEXT, " +
                 COLUMN_SIZE + " TEXT );";
-        db.execSQL(query);
+        db.execSQL(CREATE_INGREDIENT_TABLE);
+
+        String CREATE_RECIPE_TABLE = "CREATE TABLE " + TABLE_RECIPES + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_TITLE + " TEXT, " +
+                COLUMN_B + " INTEGER, " +
+                COLUMN_L + " INTEGER, " +
+                COLUMN_D + " INTEGER );";
+        db.execSQL(CREATE_RECIPE_TABLE);
+
+        String CREATE_TITLE_TABLE = "CREATE TABLE " + TABLE_TITLE + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_INGREDIENT + " TEXT, " +
+                COLUMN_QUANTITY + " INTEGER );";
+        db.execSQL(CREATE_TITLE_TABLE);
     }
 
 

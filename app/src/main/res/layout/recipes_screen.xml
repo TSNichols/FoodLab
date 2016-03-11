@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,15 +17,23 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="46dp" />
 
-    <TextView
-        android:layout_width="40dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_addNew"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/add_new_txt"
-        android:id="@+id/txt_add"
-        android:layout_alignParentTop="true"
+        android:layout_gravity="end|bottom"
+        android:src="@drawable/ic_add_black_24dp"
+        android:scaleType="center"
+        app:backgroundTint="#FF4870FF"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp" />
+
 
     <Spinner
         android:layout_width="150dp"
@@ -79,8 +89,8 @@
         android:layout_below="@+id/checkBox_breakfast"
         android:layout_alignLeft="@+id/txt_ingredients"
         android:layout_alignStart="@+id/txt_ingredients"
-        android:layout_toLeftOf="@+id/txt_add"
-        android:layout_toStartOf="@+id/txt_add" />
+        android:layout_toLeftOf="@+id/fab_addNew"
+        android:layout_toStartOf="@+id/fab_addNew" />
 
     <TextView
         android:layout_width="wrap_content"
