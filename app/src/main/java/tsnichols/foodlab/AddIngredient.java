@@ -67,14 +67,14 @@ public class AddIngredient extends DialogFragment implements View.OnClickListene
                 Ingredients_Screen.ingredientAdapter.notifyDataSetChanged();
 
                 // Toast unnecessary - just a debugging tool
-                Toast.makeText(getActivity(), eTxtIngredientName.getText() + " added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), WordUtils.capitalizeFully(eTxtIngredientName.getText().toString()) + " added", Toast.LENGTH_SHORT).show();
 
                 eTxtIngredientName.setText("");
             }
             dismiss();
         }
         else {
-            Toast.makeText(getActivity(), "Cancel was clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "Cancel was clicked", Toast.LENGTH_SHORT).show();
             dismiss();
         }
     }
