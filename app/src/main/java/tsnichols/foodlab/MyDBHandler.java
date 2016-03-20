@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.content.Context;
 import android.content.ContentValues;
 
-import org.apache.commons.lang3.text.WordUtils;
-
 import java.util.ArrayList;
 import java.util.List;
 
