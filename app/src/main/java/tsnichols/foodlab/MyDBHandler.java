@@ -64,8 +64,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-/** ****************************************
- *  Database handlers for INGREDIENTS screen
+/** **************************************** *
+ *  Database handlers for INGREDIENTS screen *
  *  **************************************** */
 
     // Add ingredient to database
@@ -255,8 +255,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return dbString;
     }
 
-/** ****************************************
- *  Database handlers for RECIPES screen
+/** **************************************** *
+ *  Database handlers for RECIPES screen     *
  *  **************************************** */
 
 
