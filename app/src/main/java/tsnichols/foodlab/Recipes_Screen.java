@@ -1,5 +1,6 @@
 package tsnichols.foodlab;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +18,8 @@ public class Recipes_Screen extends AppCompatActivity {
         fabAddNewRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO
+                Intent intent = new Intent(getApplicationContext(), New_Recipe_Screen.class);
+                startActivity(intent);
             }
         });
     }

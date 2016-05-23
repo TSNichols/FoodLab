@@ -18,6 +18,7 @@
         <activity android:name=".Calender_Screen" />
         <activity android:name=".Recipes_Screen" />
         <activity android:name=".Ingredients_Screen"/>
+        <activity android:name=".New_Recipe_Screen"/>
     </application>
 
 </manifest>
